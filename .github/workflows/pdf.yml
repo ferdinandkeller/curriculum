@@ -1,0 +1,51 @@
+# Simple workflow for generating a PDF and adding it to the release section
+name: Build Resume PDF
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets the permissions
+# permissions:
+#   contents: read
+#   packages: write
+permissions: write-all
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pdf_build"
+  cancel-in-progress: true
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install
+      - name: Build
+        run: yarn run build
+      - name: HTML website to PDF converter
+        uses: ferdinandkeller/html-to-pdf-action@v1.3.0
+        with:
+          source-path: dist
+          destination-path: dist/resume.pdf
+      - name: Create Release PDF
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/resume.pdf
+          asset_name: resume.pdf
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Latest version of my resume in PDF format."

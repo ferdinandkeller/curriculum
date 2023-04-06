@@ -1,0 +1,12 @@
+// we don't want our lists to have bullets
+ul {
+    li {
+        list-style: none;
+    }
+}
+
+// we don't want our links to have an underline
+a {
+    text-decoration: none;
+    color: var(--black);
+}

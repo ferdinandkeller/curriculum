@@ -1,0 +1,66 @@
+/* Set the font size of the root element to 10 pixels.
+ * This allows us to use rem units in the rest of the stylesheet.
+ * It is usefull to resize depending on the screen size or zoom level of the browser.
+ */
+:root {
+    font-size: 10px;
+}
+
+// Apply styles to all elements.
+* {
+    // make sizing more predictable and element independent
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    // we want to use a custom color palette for the whole document
+    color: var(--black);
+
+    // we want to use a custom font family for the whole document
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+}
+
+// Apply styles to the body element.
+body {
+    // we want to display the page in the center of the screen
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // we want the page to take the available space but still be airy
+    // but only when not printing
+    @media not print {
+        min-height: 100vh;
+        padding: 1cm;
+    }
+}
+
+// Style the page element.
+page {
+    // add a visible border to make the page more visible, but hide it when printing
+    border: solid 2px var(--black);
+    @media print {
+        border: none;
+    }
+
+    // set the width and height to A4 paper dimensions and add padding of 2cm
+    @media not print {
+        width: 21cm;
+        height: 29.7cm;
+        min-width: 21cm;
+        min-height: 29.7cm;
+        max-width: 21cm;
+        max-height: 29.7cm;
+    }
+    padding: 1.7cm;
+    padding-bottom: 0;
+
+    // style the sections
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 1cm;
+    column-gap: 1cm;
+    width: 100%;
+}

@@ -1,0 +1,135 @@
+@use "variables.scss";
+@use "formatting.scss";
+@use "misc.scss";
+
+// style each section's header
+h2 {
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    align-items: center;
+    line-height: 1em;
+    margin-bottom: 1em;
+
+    background-color: var(--black);
+    width: fit-content;
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    word-spacing: .3em;
+    letter-spacing: .08em;
+}
+
+// style the hook section
+.hook {
+    h1 {
+        font-weight: bold;
+        font-size: 2.5rem;
+    
+        // stylize the job title
+        .job-title {
+            font-weight: inherit;
+            font-size: inherit;
+    
+            background: -webkit-linear-gradient(top right, var(--gradient-light), var(--gradient-middle), var(--gradient-dark));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+// style the contact section
+.contact {
+    ul {
+        margin-top: 1rem;
+
+        li {
+            line-height: 1.4em;
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                font-weight: bold;
+            }
+            .value {
+                margin-bottom: 1em;
+            }
+
+            &.name {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
+
+// style the experiences section
+.experiences {
+    display: flex;
+    flex-direction: column;
+
+    .experience {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1cm;
+
+        .when {
+            width: 1.6cm;
+            min-width: 1.6cm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: .3cm;
+            margin-top: 5.5px;
+            height: auto;
+
+            &::before {
+                content: "";
+                width: 75%;
+                height: 4px;
+                border-radius: 1px;
+                background: linear-gradient(to right, var(--gradient-dark), var(--gradient-middle), var(--gradient-light));
+                margin-bottom: 7px;
+            }
+
+            .to,
+            .from {
+                font-size: 8px;
+                letter-spacing: 1px;
+                word-spacing: 4px;
+            }
+        }
+
+        .detail {
+            width: 100%;
+
+            .title {
+                text-transform: uppercase;
+                font-weight: 600;
+                margin-bottom: -.2em;
+                word-spacing: 3px;
+            }
+
+            .company {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 7px;
+                letter-spacing: .4px;
+                font-family: Space Mono, monospace;
+                color: var(--gradient-middle);
+                margin-bottom: 1em;
+            }
+
+            .what {}
+        }
+    }
+}
+
+// skills section
+.skills {
+    .competences {
+        margin-bottom: 1cm;
+    }
+}
