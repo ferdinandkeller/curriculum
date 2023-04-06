@@ -46,6 +46,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/resume.pdf
           asset_name: resume.pdf
-          tag: ${{ github.ref }}
+          tag: resume
           overwrite: true
           body: "Latest version of my resume in PDF format."
